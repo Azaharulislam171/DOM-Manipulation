@@ -93,3 +93,24 @@ li {
   border: 0px;
   padding: 3px 5px;
 }
+
+
+.why_cs_container{
+display:flex;
+gap:20px;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.why_cs_container_cards{
+  width:200px;
+  padding:20px;
+  border-radius: 8px;
+  background-color: white; /* White background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.why_cs_container_cards img{
+ width:40px;
+ float: left;
+}
