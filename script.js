@@ -1,1 +1,1 @@
-Document.getElementById("taskname1").innerText="Complete the project documentation";
+Document.getElementById("taskname1").innerHTML="Complete the project documentation";
