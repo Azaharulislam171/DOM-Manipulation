@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM Selection Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .highlight { background: yellow; }
+    .card { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1 id="page-title">Welcome to the DOM Demo</h1>
+
+  <div id="main">
+    <div class="card">
+      <h2 class="card-title">Card 1</h2>
+      <p>Some text inside card 1.</p>
+    </div>
+    <div class="card">
+      <h2 class="card-title">Card 2</h2>
+      <p>Some text inside card 2.</p>
+    </div>
+  </div>
+
+  <button id="action">Highlight Card 2</button>
+
+  <script>
+    // --- Single Element ---
+    const title = document.getElementById("page-title");
+    console.log("getElementById:", title.textContent);
+
+    const firstCard = document.querySelector(".card");
+    console.log("querySelector (first card):", firstCard);
+
+    // --- Multiple Elements ---
+    const allCards = document.getElementsByClassName("card");
+    console.log("getElementsByClassName:", allCards);
+
+    const allTitles = document.querySelectorAll(".card-title");
+    console.log("querySelectorAll:", allTitles);
+
+    // --- Traversal ---
+    const mainDiv = document.getElementById("main");
+    console.log("Children of #main:", mainDiv.children);
+
+    const secondCard = firstCard.nextElementSibling;
+    console.log("nextElementSibling:", secondCard.querySelector(".card-title").textContent);
+
+    const parent = secondCard.parentNode;
+    console.log("parentNode of secondCard:", parent.id);
+
+    // --- Attribute & Content Manipulation ---
+    const button = document.getElementById("action");
+    button.setAttribute("title", "Click to highlight card 2");
+
+    button.addEventListener("click", () => {
+      secondCard.classList.toggle("highlight");
+      button.textContent = secondCard.classList.contains("highlight")
+        ? "Remove Highlight"
+        : "Highlight Card 2";
+    });
+
+    // --- Creating and Appending ---
+    const newCard = document.createElement("div");
+    newCard.className = "card";
+    newCard.innerHTML = "<h2 class='card-title'>Card 3</h2><p>New card added dynamically!</p>";
+    mainDiv.appendChild(newCard);
+  </script>
+</body>
+</html>
